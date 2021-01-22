@@ -1,4 +1,5 @@
 from mcpi.vec3 import Vec3
+import time
 from settings import *
 
 
@@ -166,6 +167,7 @@ def build_blocks(pos_Start, p_horizon, kod, colA, colB, amount, direction=1):
     pos = pos_Start.clone()
     for i in range(amount):
         pos = build_block(pos, p_horizon, kod, colA, colB, direction)
+    time.sleep(PAUSE)
     return pos
 
 
@@ -188,7 +190,8 @@ def walls4():
     # ---------------------- 1 этаж -----------------
     pos_tek = posMAIN.clone()
     pos_tek.y += H_COKOL
-    pos_tek = build_blocks(pos_tek, True, 200, WHITE, WHITE, 3)
+    pos_tek = build_blocks(pos_tek, True, 210, BROWN, WHITE, 1)
+    pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 2)
     pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
     pos_tek = build_blocks(pos_tek, True, 110, BROWN, WHITE, 2)
 

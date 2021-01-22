@@ -19,7 +19,14 @@ BROWN = 35, 14          # было 159,12
 ORANGE = 159,1
 BROWN_DARK = 159,12      # темно-коричневый для цоколя было 159,7
 OKNO = 160      # 102              тонкое окно
+PAUSE = 0.01
 
 mc = Minecraft.create()
 
 posMAIN = Vec3(122, 67, -1011)
+# posMAIN = Vec3(488, 73, -744)
+''' для первичного позиционирования игрока в новом мире разкомментарить
+posMy = posMAIN.clone()
+posMy.y += 5
+mc.player.setTilePos(posMy)
+#'''
