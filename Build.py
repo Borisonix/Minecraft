@@ -93,7 +93,7 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
                     pos_st.x += ((W_B_1 - W_OKNA_4) // 2) * direction
                     pos.x = pos_st.x + (W_OKNA_4 - 1) * direction
             zona['W'] = {'pos0': pos_st, 'pos1': pos, 'color': OKNO}
-    else:  # стеновой блок типа 2 (7х8)
+    elif c1 == 2:  # стеновой блок типа 2 (7х8)
         if c2 == 4:  # строим цоколь?
             pos.y += (H_COKOL - 1)
             if p_horizon:
@@ -145,6 +145,36 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
                     pos_st.x += ((W_B_2 - W_OKNA_4) // 2) * direction
                     pos.x = pos_st.x + (W_OKNA_4 - 1) * direction
             zona['W'] = {'pos0': pos_st, 'pos1': pos, 'color': OKNO}
+    else:                                                           # стеновой блок типа 3 (7x13)
+        if p_horizon:
+            pos.z += (W_B_3 - 1) * direction
+            pos_ret.z += (W_B_3) * direction
+        else:
+            pos.x += (W_B_3 - 1) * direction
+            pos_ret.x += W_B_3 * direction
+
+        # zona A
+        pos_st.y += H_ZONA_A
+        pos.y += (H_ZONA_A - 1)
+        zona['A'] = {'pos0': posStart.clone(), 'pos1': pos, 'color': colA}
+
+        # zona B
+        pos.y = posStart.y
+        pos.y += (H_B_3 - 1)
+        zona['B'] = {'pos0': pos_st, 'pos1': pos, 'color': colB}
+
+        if c2 != 0:
+            if c2 == 1:  # код = 310 - 1 окно малое в центре
+                pos_st = zona['B']['pos0'].clone()  # заготовка для координаты начала окна
+                pos = pos_st.clone()  # заготовка для координаты конца окна
+                pos.y += (H_OKNA_5 - 1)
+                if p_horizon:
+                    pos_st.z += ((W_B_3 - W_OKNA_5) // 2) * direction
+                    pos.z = pos_st.z + (W_OKNA_5 - 1) * direction
+                else:
+                    pos_st.x += ((W_B_3 - W_OKNA_5) // 2) * direction
+                    pos.x = pos_st.x + (W_OKNA_5 - 1) * direction
+            zona['W'] = {'pos0': pos_st, 'pos1': pos, 'color': OKNO}
 
     for k in zona.values():  # постройка подготовленных зон (А, B и W)
         mc.setBlocks(k['pos0'], k['pos1'], k['color'])
@@ -167,7 +197,8 @@ def build_blocks(pos_Start, p_horizon, kod, colA, colB, amount, direction=1):
     pos = pos_Start.clone()
     for i in range(amount):
         pos = build_block(pos, p_horizon, kod, colA, colB, direction)
-    time.sleep(PAUSE)
+    if PAUSE > 0:
+        time.sleep(PAUSE)
     return pos
 
 
@@ -431,6 +462,7 @@ def school112():
     pos_tek = build_blocks(pos_tek, True, 112, WHITE, WHITE, 1)
     pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
     pos_tek = build_blocks(pos_tek, True, 111, WHITE, WHITE, 1)
+    pos_tek = build_blocks(pos_tek, False, 310, WHITE, BROWN, 4, -1)
 
     pos_tek = posMAIN.clone()
     pos_tek.y += H_COKOL + H_B * 2                                                # 3 этаж
