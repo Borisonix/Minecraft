@@ -1,12 +1,11 @@
-from mcpi.minecraft import Minecraft
-from mcpi.vec3 import Vec3
-from settings import *
+# from mcpi.minecraft import Minecraft
+# from mcpi.vec3 import Vec3
+# from settings import *
 from Build import *
 from perekritie import *
 # import time
 
 # mc = Minecraft.create()
-
 
 
 ''' для первичного позиционирования игрока в новом мире
