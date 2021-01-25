@@ -25,7 +25,7 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
     pos = posStart.clone()  # заготовка для координаты конца кубоида
     pos_ret = posStart.clone()  # заготовка для координаты, возвращаемой из функции
 
-    if c1 == 1:  # стеновой блок типа 1 (9х8)
+    if c1 == 1:  # =======   стеновой блок типа 1 (9х8)   ===========================================================
         if c2 == 4:  # строим цоколь?
             pos.y += H_COKOL - 1
             if p_horizon:
@@ -37,7 +37,7 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
             mc.setBlocks(posStart, pos, BROWN_DARK)
             return pos_ret  # выходим
 
-        if p_horizon:
+        if p_horizon:       # отмеряем ширину блока по соответствующей оси
             pos.z += (W_B_1 - 1) * direction
             pos_ret.z += W_B_1 * direction
         else:
@@ -54,7 +54,7 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
         pos.y += H_B - 1  # высота зоны B
         zona['B'] = {'pos0': pos_st, 'pos1': pos, 'color': colB}
 
-        # окна
+        # zona W - окно
         if c2 != 0:  # какое-то окно есть?
             if c2 == 1:  # 1 окно
                 pos_st = zona['B']['pos0'].clone()  # заготовка для координаты начала окна
@@ -93,7 +93,7 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
                     pos_st.x += ((W_B_1 - W_OKNA_4) // 2) * direction
                     pos.x = pos_st.x + (W_OKNA_4 - 1) * direction
             zona['W'] = {'pos0': pos_st, 'pos1': pos, 'color': OKNO}
-    elif c1 == 2:  # стеновой блок типа 2 (7х8)
+    elif c1 == 2:  # стеновой блок типа 2 (7х8) ==============================================================
         if c2 == 4:  # строим цоколь?
             pos.y += (H_COKOL - 1)
             if p_horizon:
