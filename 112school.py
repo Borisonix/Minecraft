@@ -21,9 +21,9 @@ posMAIN.x += 20
 posMAIN.y += 1
 posMAIN.z += 70
 
-school112()         # постройка школы
-'''walls4()
-posMAIN.x += 2
+#  school112()         # постройка школы
+walls4()
+posMAIN.x = 188
 posMAIN.y += 1
-posMAIN.z += 2
-flooring(posMAIN, 89) '''
+posMAIN.z = -915
+flooring(posMAIN, 89)
