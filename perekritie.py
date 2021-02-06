@@ -23,18 +23,19 @@ def neighbors(pos):
     return ret
 
 
-def flooring(posStart, matirial):
+def flooring(posStart: Vec3, matirial):
     if mc.getBlock(posStart) == AIR:
         frontier = Queue()
         frontier.put(posStart)
-        # reached = set()
-        # reached.add(hash(posStart))
+        reached = set()
+        reached.add(tuple([posStart.x, posStart.y, posStart.z]))
 
         while not frontier.empty():
             current = frontier.get()
             mc.setBlock(current, matirial)
 
             for next in neighbors(current):
-                frontier.put(next)
-                    # reached.add(hash(next))
+                if (tuple([next.x, next.y, next.z])) not in reached:
+                    frontier.put(next)
+                    reached.add(tuple([next.x, next.y, next.z]))
 

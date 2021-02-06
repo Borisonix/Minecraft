@@ -1,11 +1,5 @@
-# from mcpi.minecraft import Minecraft
-# from mcpi.vec3 import Vec3
-# from settings import *
 from Build import *
 from perekritie import *
-# import time
-
-# mc = Minecraft.create()
 
 
 ''' для первичного позиционирования игрока в новом мире
@@ -27,10 +21,9 @@ posMAIN.x += 20
 posMAIN.y += 1
 posMAIN.z += 70
 
-school112()         # постройка школы
-'''walls4()
-posMAIN.x += 2
+#  school112()         # постройка школы
+walls4()
+posMAIN.x = 188
 posMAIN.y += 1
-posMAIN.z += 2
-flooring(posMAIN, 89) '''
-
+posMAIN.z = -915
+flooring(posMAIN, 89)
