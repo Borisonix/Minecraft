@@ -27,3 +27,4 @@ posMAIN.x = 188
 posMAIN.y += 1
 posMAIN.z = -915
 flooring(posMAIN, 89)
+# новая строчка
