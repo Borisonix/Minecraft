@@ -22,9 +22,11 @@ posMAIN.y += 1
 posMAIN.z += 70
 
 #  school112()         # постройка школы
-walls4()
-posMAIN.x = 188
-posMAIN.y += 1
+walls4()                # постройка здания в 4 стены
+
+# постройка пола
+posMAIN.x = 154
+posMAIN.y = 100
 posMAIN.z = -915
-flooring(posMAIN, 89)
+flooring(posMAIN, 1)
 # новая строчка
