@@ -1,5 +1,6 @@
 from Build import *
-from perekritie import *
+from settings import *
+from mcpi.vec3 import Vec3
 
 
 ''' для первичного позиционирования игрока в новом мире

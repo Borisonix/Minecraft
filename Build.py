@@ -1,4 +1,5 @@
 from mcpi.vec3 import Vec3
+from perekritie import *
 import time
 from settings import *
 
@@ -326,458 +327,617 @@ def walls4():
 
 
 def school112():
-    # -------------------------------- цоколь -------------------------------
-    # стена 1
-    pos_tek = build_blocks(posMAIN, True, 240, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 2)
-    # стена 2
-    pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 8)
-    # стена 3
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
-    # стена 4
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 2, -1)
-    # стена 5
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 5)
-    # стена 6
-    pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 2)
-    # стена 7
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
-    # стена 8
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 8, -1)
-    pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4, -1)
-    # стена 9
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 2)
-    # стена 10
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 18)
-    # стена 11
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
-    # стена 12
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 4)
-    # стена 13
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 8, -1)
-    # стена 14
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 4, -1)
-    # стена 15
-    build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 8, -1)
-    build_blocks(pos_tek, True, 240, BROWN, BROWN, 9, -1)
-    # стена 16
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 10)
-    # стена 17
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 9, -1)
-    # стена 18
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 10, -1)
-    # стена 19
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 8, -1)
-    # стена 20
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 4, +1)
-    # стена 21
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 8, -1)
-    # стена 22
-    pos_tek.x -= 1
-    pos_tek.z += 1
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 4, -1)
-    # стена 23
-    pos_tek.x += 1
-    pos_tek.z += 1
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
-    build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
-    # стена 24
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 18, -1)
+    def level0():
+        # -------------------------------- цоколь -------------------------------
+        pos_floor = posMAIN.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_COKOL - 1
+        pos_floor.z += 1
+        floor.append(0)
+        floor[0] = list()
+        floor[0].append(pos_floor)            #  опорная точка для построения пола
+        mc.setBlock(pos_floor, FONAR)
+        # стена 1
+        pos_tek = build_blocks(posMAIN, True, 240, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 2)
+        # стена 2
+        pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 8)
+        # стена 3
+        pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
+        # стена 4
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 2, -1)
+        # стена 5
+        pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 5)
+        # стена 6
+        pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 2)
+        # стена 7
+        pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
+        # стена 8
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 8, -1)
+        pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4, -1)
+        # стена 9
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 2)
+        # стена 10
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 18)
 
-    # -------------------------------- 1 этаж -------------------------------
-    pos_tek = posMAIN.clone()
-    pos_tek.y +=  H_COKOL
-    # стена 1
-    pos_tek = build_blocks(pos_tek, True, 200, WHITE, WHITE, 3)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, True, 110, BROWN, WHITE, 2)
-    # стена 2
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4)
-    # стена 3
-    pos_tek = build_blocks(pos_tek, True, 112, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, True, 111, BROWN, BROWN, 1)
-    # стена 4
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
-    # стена 5
-    pos_tek = build_blocks(pos_tek, True, 110, BROWN, BROWN, 5)
-    # стена 6
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
-    # стена 7
-    pos_tek = build_blocks(pos_tek, True, 112, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, True, 111, BROWN, BROWN, 1)
-    # стена 8
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 4, -1)
-    # стена 9
-    pos_tek = build_blocks(pos_tek, True, 110, BROWN, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, True, 200, WHITE, WHITE, 3)
-    # стена 10
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, ORANGE, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 5)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
-    # стена 11
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
-    # стена 12
-    pos_tek = build_blocks(pos_tek, False, 200,  WHITE, WHITE, 4)
-    # стена 13
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 2, -1)
-    # стена 14
-    pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 1, -1)
-    # стена 15
-    build_blocks(pos_tek, True, 200, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
-    build_blocks(pos_tek, True, 200, WHITE, WHITE, 9, -1)
-    # стена 16
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 3)
-    # стена 17
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)  # дверь
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)
-    # стена 18
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1, -1)   # дверь
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 8, -1)
-    # стена 19
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
-    # стена 20
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 1, +1)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 1, +1)
-    pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 2, +1)
-    # стена 21
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 2, -1)
-    # стена 22
-    pos_tek.x -= 1
-    pos_tek.z += 1
-    pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 4, -1)
-    # стена 23
-    pos_tek.x += 1
-    pos_tek.z += 1
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
-    build_blocks(pos_tek, True, 200, WHITE, WHITE, 4)
-    # стена 24
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 5, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, ORANGE, 2, -1)
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_COKOL - 1
+        floor[0].append(pos_floor)  # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
 
-    # -------------------------------- 2 этаж -------------------------------
-    pos_tek = posMAIN.clone()
-    pos_tek.y +=  H_COKOL + H_B * 1
-    # стена 1
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 3)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
-    # стена 2
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, ORANGE, 4)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4)
-    # стена 3
-    pos_tek = build_blocks(pos_tek, True, 112, WHITE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, True, 111, WHITE, WHITE, 1)
-    # стена 4
-    pos_tek = build_blocks(pos_tek, False, 110, WHITE, WHITE, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 2, -1)
-    # стена 5
-    pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, True, 110, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
-    # стена 6
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, False, 110, WHITE, WHITE, 2)
-    # стена 7
-    pos_tek = build_blocks(pos_tek, True, 112, WHITE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, True, 111, WHITE, WHITE, 1)
-    # стена 8
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, ORANGE, 4, -1)
-    # стена 9
-    pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 3)
-    # стена 10
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3)
-    # стена 11
-    pos_tek = build_blocks(pos_tek, True, 300, BROWN, ORANGE, 4)
-    # стена 12
-    pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 4)
-    # стена 13
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
-    # стена 14
-    pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 4, -1)
-    # стена 15
-    build_blocks(pos_tek, True, 300, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
-    build_blocks(pos_tek, True, 300, WHITE, WHITE, 9, -1)
-    # стена 16
-    pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 5)
-    pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 5)
-    # стена 17
-    pos_tek = build_blocks(pos_tek, True, 300, ORANGE, WHITE, 2, -1)
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 310, BROWN, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 1, -1)
-    # стена 18
-    pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 5, -1)
-    pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 5, -1)
-    # стена 19
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
-    # стена 20
-    pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 4)
-    # стена 21
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
-    # стена 22
-    pos_tek.x -= 1
-    pos_tek.z += 1
-    pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 4, -1)
-    # стена 23
-    pos_tek.x += 1
-    pos_tek.z += 1
-    pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 4)
-    build_blocks(pos_tek, True, 300, WHITE, WHITE, 4)
-    # стена 24
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, BROWN, 2, -1)
+        # стена 11
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
+        # стена 12
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 4)
+        # стена 13
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 8, -1)
+        # стена 14
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 4, -1)
+        # стена 15
+        build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 8, -1)
+        build_blocks(pos_tek, True, 240, BROWN, BROWN, 9, -1)
+        # стена 16
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 10)
+        # стена 17
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 9, -1)
+        # стена 18
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 10, -1)
 
-    # -------------------------------- 3 этаж -------------------------------
-    pos_tek = posMAIN.clone()
-    pos_tek.y += H_COKOL + H_B * 2
-    # стена 1
-    pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 3)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, True, 110, ORANGE, ORANGE, 2)
-    # стена 2
-    pos_tek = build_blocks(pos_tek, False, 110, ORANGE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4)
-    # стена 3
-    pos_tek = build_blocks(pos_tek, True, 112, WHITE, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4)
-    pos_tek = build_blocks(pos_tek, True, 111, WHITE, ORANGE, 1)
-    # стена 4
-    pos_tek = build_blocks(pos_tek, False, 110, WHITE, ORANGE, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, ORANGE, 2, -1)
-    # стена 5
-    pos_tek = build_blocks(pos_tek, True, 110, WHITE, ORANGE, 2)
-    pos_tek = build_blocks(pos_tek, True, 110, ORANGE, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 110, WHITE, ORANGE, 2)
-    # стена 6
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, ORANGE, 2)
-    pos_tek = build_blocks(pos_tek, False, 110, WHITE, ORANGE, 2)
-    # стена 7
-    pos_tek = build_blocks(pos_tek, True, 112, WHITE, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4)
-    pos_tek = build_blocks(pos_tek, True, 111, WHITE, ORANGE, 1)
-    # стена 8
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 110, ORANGE, WHITE, 4, -1)
-    # стена 9
-    pos_tek = build_blocks(pos_tek, True, 110, WHITE, ORANGE, 2)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, ORANGE, 3)
-    # стена 10
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 3)
-    # стена 11
-    pos_tek.y += 5
-    pos_tek = build_blocks(pos_tek, True, 400, WHITE, WHITE, 4)
-    # стена 12
-    pos_tek = build_blocks(pos_tek, False, 400, ORANGE, ORANGE, 4)
-    # стена 13
-    pos_tek = build_blocks(pos_tek, True, 400, WHITE, WHITE, 8, -1)
-    # стена 14
-    pos_tek = build_blocks(pos_tek, False, 400, WHITE, WHITE, 4, -1)
-    # стена 15
-    build_blocks(pos_tek, True, 400, WHITE, WHITE, 4)
-    pos_tek.y -= 5
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 200, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
-    # стена 16
-    pos_tek.y += 5
-    pos_tek = build_blocks(pos_tek, False, 400, WHITE, WHITE, 10)
-    # стена 17
-    pos_tek = build_blocks(pos_tek, True, 400, WHITE, WHITE, 9, -1)
-    # стена 18
-    pos_tek = build_blocks(pos_tek, False, 400, WHITE, WHITE, 10, -1)
-    build_blocks(pos_tek, True, 400, WHITE, WHITE, 9)
-    # стена 19
-    pos_tek.y -= 5
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 200, ORANGE, WHITE, 2, -1)
-    # стена 20
-    pos_tek.y += 5
-    build_blocks(pos_tek, True, 400, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 400, ORANGE, ORANGE, 4)
-    # стена 21
-    pos_tek = build_blocks(pos_tek, True, 400, WHITE, WHITE, 8, -1)
-    # стена 22
-    pos_tek.x -= 1
-    pos_tek.z += 1
-    pos_tek = build_blocks(pos_tek, False, 400, ORANGE, ORANGE, 4, -1)
-    # стена 23
-    pos_tek.y -= 8
-    pos_tek.x += 1
-    pos_tek.z += 1
-    pos_tek = build_blocks(pos_tek, True, 300, ORANGE, WHITE, 4)
-    # стена 24
-    pos_tek.y += 3
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, WHITE, 2, -1)
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.z += 1
+        pos_floor.y += H_COKOL - 1
+        floor[0].append(pos_floor)              # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
 
-    # -------------------------------- крыша -------------------------------
-    pos_tek = posMAIN.clone()
-    pos_tek.y += H_COKOL + H_B * 3
-    # стена 1
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 3)
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 2)
-    # стена 2
-    pos_tek = build_blocks(pos_tek, False, 130, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4)
-    # стена 3
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1)
-    # стена 4
-    pos_tek = build_blocks(pos_tek, False, 130, ORANGE, WHITE, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 2, -1)
-    # стена 5
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 5)
-    # стена 6
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, False, 130, ORANGE, WHITE, 2)
-    # стена 7
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1)
-    # стена 8
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 130, WHITE, WHITE, 4, -1)
-    # стена 9
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 3)
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 2)
-    # стена 10
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 5)
-    pos_tek = build_blocks(pos_tek, False, 230, BROWN, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 3)
-    # обход пристойки правой
-    pos_tek = build_blocks(pos_tek, True, 231, WHITE, WHITE, 4, -1)
-    # стена 15
-    pos_tek = build_blocks(pos_tek, True, 230, WHITE, WHITE, 3, -1)
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4, -1)
-    # обход актового зала
-    pos_tek = build_blocks(pos_tek, True, 231, WHITE, WHITE, 10, -1)
-    # стена 19
-    pos_tek = build_blocks(pos_tek, True, 230, WHITE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 230, WHITE, WHITE, 3, -1)
-    # обход пристойки правой
-    pos_tek = build_blocks(pos_tek, True, 231, WHITE, WHITE, 4, -1)
-    pos_tek.z += 2              # корректировка для начала стены 24
-    # вырезаем излишек
-    pos1 = pos_tek.clone()
-    pos1.y += 2
-    pos2 = pos_tek.clone()
-    pos2.y += 8
-    pos2.z -= 2
-    mc.setBlocks(pos1, pos2, AIR)
-    # стена 24
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, BROWN, WHITE, 2, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 5, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4, -1)
+        # стена 19
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 8, -1)
+        # стена 20
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 4, +1)
 
+        pos_floor = pos_tek.clone()
+        pos_floor.x -= 1
+        pos_floor.z -= 1
+        pos_floor.y += H_COKOL - 1
+        floor[0].append(pos_floor)  # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 21
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 8, -1)
+        # стена 22
+        pos_tek.x -= 1
+        pos_tek.z += 1
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 4, -1)
+        # стена 23
+        pos_tek.x += 1
+        pos_tek.z += 1
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
+        build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
+        # стена 24
+        pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 18, -1)
+
+    def level1():
+        # -------------------------------- 1 этаж -------------------------------
+        pos_tek = posMAIN.clone()
+        pos_tek.y +=  H_COKOL
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_B
+        pos_floor.z += 1
+        floor.append(0)
+        floor[1] = list()
+        floor[1].append(pos_floor)  # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 1
+        pos_tek = build_blocks(pos_tek, True, 200, WHITE, WHITE, 3)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, True, 110, BROWN, WHITE, 2)
+        # стена 2
+        pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4)
+        # стена 3
+        pos_tek = build_blocks(pos_tek, True, 112, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, True, 111, BROWN, BROWN, 1)
+        # стена 4
+        pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
+        # стена 5
+        pos_tek = build_blocks(pos_tek, True, 110, BROWN, BROWN, 5)
+        # стена 6
+        pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
+        # стена 7
+        pos_tek = build_blocks(pos_tek, True, 112, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, True, 111, BROWN, BROWN, 1)
+        # стена 8
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 4, -1)
+        # стена 9
+        pos_tek = build_blocks(pos_tek, True, 110, BROWN, WHITE, 2)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, True, 200, WHITE, WHITE, 3)
+
+        # стена 10
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, ORANGE, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 5)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_B
+        floor[1].append(pos_floor)  # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 11
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
+        # стена 12
+        pos_tek = build_blocks(pos_tek, False, 200,  WHITE, WHITE, 4)
+        # стена 13
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 2, -1)
+        # стена 14
+        pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 1, -1)
+        # стена 15
+        build_blocks(pos_tek, True, 200, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
+        build_blocks(pos_tek, True, 200, WHITE, WHITE, 9, -1)
+        # стена 16
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 3)
+        # стена 17
+        pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)  # дверь
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)
+        # стена 18
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1, -1)   # дверь
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 8, -1)
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.z += 1
+        pos_floor.y += H_B
+        floor[1].append(pos_floor)              # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 19
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
+        # стена 20
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 1, +1)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 1, +1)
+        pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 2, +1)
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x -= 1
+        pos_floor.z -= 1
+        pos_floor.y += H_B
+        floor[1].append(pos_floor)              # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 21
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 2, -1)
+        # стена 22
+        pos_tek.x -= 1
+        pos_tek.z += 1
+        pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 4, -1)
+        # стена 23
+        pos_tek.x += 1
+        pos_tek.z += 1
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
+        build_blocks(pos_tek, True, 200, WHITE, WHITE, 4)
+        # стена 24
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 5, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, ORANGE, 2, -1)
+
+    def level2():
+        # -------------------------------- 2 этаж -------------------------------
+        pos_tek = posMAIN.clone()
+        pos_tek.y +=  H_COKOL + H_B * 1
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_B
+        pos_floor.z += 1
+        floor.append(0)
+        floor[2] = list()
+        floor[2].append(pos_floor)  # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 1
+        pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 3)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
+        # стена 2
+        pos_tek = build_blocks(pos_tek, False, 110, BROWN, ORANGE, 4)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4)
+        # стена 3
+        pos_tek = build_blocks(pos_tek, True, 112, WHITE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, True, 111, WHITE, WHITE, 1)
+        # стена 4
+        pos_tek = build_blocks(pos_tek, False, 110, WHITE, WHITE, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 2, -1)
+        # стена 5
+        pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
+        pos_tek = build_blocks(pos_tek, True, 110, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
+        # стена 6
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 2)
+        pos_tek = build_blocks(pos_tek, False, 110, WHITE, WHITE, 2)
+        # стена 7
+        pos_tek = build_blocks(pos_tek, True, 112, WHITE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, True, 111, WHITE, WHITE, 1)
+        # стена 8
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1, -1)
+        pos_tek = build_blocks(pos_tek, False, 110, BROWN, ORANGE, 4, -1)
+        # стена 9
+        pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 3)
+        # стена 10
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3)
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_B_3 - 1
+        floor[2].append(pos_floor)  # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 11
+        pos_tek = build_blocks(pos_tek, True, 300, BROWN, ORANGE, 4)
+        # стена 12
+        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 4)
+        # стена 13
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, BROWN, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
+        # стена 14
+        pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 4, -1)
+        # стена 15
+        build_blocks(pos_tek, True, 300, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
+        build_blocks(pos_tek, True, 300, WHITE, WHITE, 9, -1)
+        # стена 16
+        pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 5)
+        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 5)
+        # стена 17
+        pos_tek = build_blocks(pos_tek, True, 300, ORANGE, WHITE, 2, -1)
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, BROWN, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 310, BROWN, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 1, -1)
+        # стена 18
+        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 5, -1)
+        pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 5, -1)
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.z += 1
+        pos_floor.y += H_B_3-1
+        floor[2].append(pos_floor)              # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 19
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1, -1)
+        # стена 20
+        pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 4)
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x -= 1
+        pos_floor.z -= 1
+        pos_floor.y += H_B_3-1
+        floor[2].append(pos_floor)              # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 21
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, BROWN, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
+        # стена 22
+        pos_tek.x -= 1
+        pos_tek.z += 1
+        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 4, -1)
+        # стена 23
+        pos_tek.x += 1
+        pos_tek.z += 1
+        pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 4)
+        build_blocks(pos_tek, True, 300, WHITE, WHITE, 4)
+        # стена 24
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 1, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, BROWN, 2, -1)
+
+    def level3():
+        # -------------------------------- 3 этаж -------------------------------
+        pos_tek = posMAIN.clone()
+        pos_tek.y += H_COKOL + H_B * 2
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_B
+        pos_floor.z += 1
+        floor.append(0)
+        floor[3] = list()
+        floor[3].append(pos_floor)          # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 1
+        pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 3)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, True, 110, ORANGE, ORANGE, 2)
+        # стена 2
+        pos_tek = build_blocks(pos_tek, False, 110, ORANGE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4)
+        # стена 3
+        pos_tek = build_blocks(pos_tek, True, 112, WHITE, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4)
+        pos_tek = build_blocks(pos_tek, True, 111, WHITE, ORANGE, 1)
+        # стена 4
+        pos_tek = build_blocks(pos_tek, False, 110, WHITE, ORANGE, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, ORANGE, 2, -1)
+        # стена 5
+        pos_tek = build_blocks(pos_tek, True, 110, WHITE, ORANGE, 2)
+        pos_tek = build_blocks(pos_tek, True, 110, ORANGE, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 110, WHITE, ORANGE, 2)
+        # стена 6
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, ORANGE, 2)
+        pos_tek = build_blocks(pos_tek, False, 110, WHITE, ORANGE, 2)
+        # стена 7
+        pos_tek = build_blocks(pos_tek, True, 112, WHITE, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4)
+        pos_tek = build_blocks(pos_tek, True, 111, WHITE, ORANGE, 1)
+        # стена 8
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 200, BROWN, ORANGE, 1, -1)
+        pos_tek = build_blocks(pos_tek, False, 110, ORANGE, WHITE, 4, -1)
+        # стена 9
+        pos_tek = build_blocks(pos_tek, True, 110, WHITE, ORANGE, 2)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, True, 200, BROWN, ORANGE, 3)
+        # стена 10
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, WHITE, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 3)
+
+        pos_tek.y += 5
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_B_4 - 1
+        floor[3].append(pos_floor)               # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 11
+        pos_tek = build_blocks(pos_tek, True, 400, WHITE, WHITE, 4)
+        # стена 12
+        pos_tek = build_blocks(pos_tek, False, 400, ORANGE, ORANGE, 4)
+        # стена 13
+        pos_tek = build_blocks(pos_tek, True, 400, WHITE, WHITE, 8, -1)
+        # стена 14
+        pos_tek = build_blocks(pos_tek, False, 400, WHITE, WHITE, 4, -1)
+        # стена 15
+        build_blocks(pos_tek, True, 400, WHITE, WHITE, 4)
+        pos_tek.y -= 5
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 200, ORANGE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
+        # стена 16
+        pos_tek.y += 5
+        pos_tek = build_blocks(pos_tek, False, 400, WHITE, WHITE, 10)
+        # стена 17
+        pos_tek = build_blocks(pos_tek, True, 400, WHITE, WHITE, 9, -1)
+        # стена 18
+        pos_tek = build_blocks(pos_tek, False, 400, WHITE, WHITE, 10, -1)
+        build_blocks(pos_tek, True, 400, WHITE, WHITE, 9)
+
+        # pos_tek.y += 5
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.z += 1
+        pos_floor.y += H_B_4 - 1
+        floor[3].append(pos_floor)               # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 19
+        pos_tek.y -= 5
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 200, ORANGE, WHITE, 2, -1)
+        # стена 20
+        pos_tek.y += 5
+        build_blocks(pos_tek, True, 400, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 400, ORANGE, ORANGE, 4)
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x -= 1
+        pos_floor.z -= 1
+        pos_floor.y += H_B_4 - 1
+        floor[3].append(pos_floor)               # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 21
+        pos_tek = build_blocks(pos_tek, True, 400, WHITE, WHITE, 8, -1)
+        # стена 22
+        pos_tek.x -= 1
+        pos_tek.z += 1
+        pos_tek = build_blocks(pos_tek, False, 400, ORANGE, ORANGE, 4, -1)
+        # стена 23
+        pos_tek.y -= 8
+        pos_tek.x += 1
+        pos_tek.z += 1
+        pos_tek = build_blocks(pos_tek, True, 300, ORANGE, WHITE, 4)
+        # стена 24
+        pos_tek.y += 3
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, BROWN, WHITE, 2, -1)
+
+    def level4():
+        # -------------------------------- крыша -------------------------------
+        pos_tek = posMAIN.clone()
+        pos_tek.y += H_COKOL + H_B * 3
+
+        pos_floor = pos_tek.clone()
+        pos_floor.x += 1
+        pos_floor.y += H_B - 1
+        pos_floor.z += 1
+        floor.append(0)
+        floor[4] = list()
+        floor[4].append(pos_floor)  # опорная точка для построения потолка
+        mc.setBlock(pos_floor, FONAR)
+
+        # стена 1
+        pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 3)
+        pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 2)
+        # стена 2
+        pos_tek = build_blocks(pos_tek, False, 130, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4)
+        # стена 3
+        pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1)
+        # стена 4
+        pos_tek = build_blocks(pos_tek, False, 130, ORANGE, WHITE, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 2, -1)
+        # стена 5
+        pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 5)
+        # стена 6
+        pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 2)
+        pos_tek = build_blocks(pos_tek, False, 130, ORANGE, WHITE, 2)
+        # стена 7
+        pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1)
+        # стена 8
+        pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, False, 130, WHITE, WHITE, 4, -1)
+        # стена 9
+        pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 3)
+        pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 2)
+        # стена 10
+        pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 5)
+        pos_tek = build_blocks(pos_tek, False, 230, BROWN, WHITE, 2)
+        pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 3)
+        # обход пристойки правой
+        pos_tek = build_blocks(pos_tek, True, 231, WHITE, WHITE, 4, -1)
+        # стена 15
+        pos_tek = build_blocks(pos_tek, True, 230, WHITE, WHITE, 3, -1)
+        pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4, -1)
+        # обход актового зала
+        pos_tek = build_blocks(pos_tek, True, 231, WHITE, WHITE, 10, -1)
+        # стена 19
+        pos_tek = build_blocks(pos_tek, True, 230, WHITE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, True, 230, WHITE, WHITE, 3, -1)
+        # обход пристойки правой
+        pos_tek = build_blocks(pos_tek, True, 231, WHITE, WHITE, 4, -1)
+        pos_tek.z += 2              # корректировка для начала стены 24
+        # вырезаем излишек
+        pos1 = pos_tek.clone()
+        pos1.y += 2
+        pos2 = pos_tek.clone()
+        pos2.y += 8
+        pos2.z -= 2
+        mc.setBlocks(pos1, pos2, AIR)
+        # стена 24
+        pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 230, BROWN, WHITE, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 5, -1)
+        pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4, -1)
+
+
+    level0()
+    level1()
+    level2()
+    level3()
+    level4()
+    q = input('Будем строить полы и крышу? (Y/N)')
+    if q == "Y" or q == "y":
+        for i in  range(5):
+            flooring(floor[i][0], KAMEN)

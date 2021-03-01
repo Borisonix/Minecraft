@@ -26,6 +26,8 @@ ORANGE = 159,1
 BROWN_DARK = 159,12      # темно-коричневый для цоколя было 159,7
 OKNO = 160      # 102              тонкое окно
 PAUSE = 0
+KAMEN = 44
+FONAR = 89   # был 124
 
 mc = Minecraft.create()
 
@@ -36,3 +38,4 @@ posMy = posMAIN.clone()
 posMy.y += 5
 mc.player.setTilePos(posMy)
 #'''
+floor = list()      # список опорных точек для построения полов и крыши
