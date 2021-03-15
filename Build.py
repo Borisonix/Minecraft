@@ -37,6 +37,60 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
                 pos_ret.x += W_B_1 * direction
             mc.setBlocks(posStart, pos, BROWN_DARK)
             return pos_ret  # выходим
+        if c2 == 5:         # ===============    широкий блок с 2 дверьми   ====================================
+            pos.y += H_B - 1
+            if p_horizon:
+                pos.z += (W_B_1 - 1) * direction
+                pos_ret.z += W_B_1 * direction
+            else:
+                pos.x += (W_B_1 - 1) * direction
+                pos_ret.x += W_B_1 * direction
+            mc.setBlocks(posStart, pos, colA)
+            # ----------  первая дверь  ------------------
+            pos_st1 = posStart.clone()  # стартовая позиция нижней части двери
+            pos_st2 = posStart.clone()  # стартовая позиция верхней части двери
+            pos1 = posStart.clone()  # заготовка для конечной позиция нижней части двери
+            pos2 = posStart.clone()  # заготовка для конечной позиция верхней части двери
+
+            pos_st2.y += H_ZONA_A   # стартовая высота верхней части двери. Нижняя уже готова
+
+            pos1.y += 1
+            pos2.y += H_DOOR_1 - 1
+            if p_horizon:
+                pos_st1.z += 1 * direction
+                pos_st2.z += 1 * direction
+                pos1.z += (W_DOOR_1) * direction
+                pos2.z += (W_DOOR_1) * direction
+            else:
+                pos_st1.x += 1 * direction
+                pos_st2.x += 1 * direction
+                pos1.x += W_DOOR_1 * direction
+                pos2.x += W_DOOR_1 * direction
+            mc.setBlocks(pos_st1, pos1, GREY_GLASS_PAN)
+            mc.setBlocks(pos_st2, pos2, GLASS_PAN)
+            # ----------  вторая дверь  ------------------
+            pos_st1 = posStart.clone()  # стартовая позиция нижней части двери
+            pos_st2 = posStart.clone()  # стартовая позиция верхней части двери
+            pos1 = posStart.clone()  # заготовка для конечной позиция нижней части двери
+            pos2 = posStart.clone()  # заготовка для конечной позиция верхней части двери
+
+            pos_st2.y += H_ZONA_A   # стартовая высота верхней части двери. Нижняя уже готова
+
+            pos1.y += 1
+            pos2.y += H_DOOR_1 - 1
+            if p_horizon:
+                pos_st1.z += (W_DOOR_1 + 2) * direction
+                pos_st2.z += (W_DOOR_1 + 2) * direction
+                pos1.z += (W_DOOR_1 * 2 + 1) * direction
+                pos2.z += (W_DOOR_1 * 2 + 1) * direction
+            else:
+                pos_st1.x += (W_DOOR_1 + 2) * direction
+                pos_st2.x += (W_DOOR_1 + 2) * direction
+                pos1.x += (W_DOOR_1 * 2 + 1) * direction
+                pos2.x += (W_DOOR_1 * 2 + 1) * direction
+            mc.setBlocks(pos_st1, pos1, GREY_GLASS_PAN)
+            mc.setBlocks(pos_st2, pos2, GLASS_PAN)
+            return pos_ret  # выходим
 
         if p_horizon:       # отмеряем ширину блока по соответствующей оси
             pos.z += (W_B_1 - 1) * direction
@@ -198,9 +252,9 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
 
 
 
-
-    for k in zona.values():  # постройка подготовленных зон (А, B и W)
-        mc.setBlocks(k['pos0'], k['pos1'], k['color'])
+    ks = zona.keys()
+    for k in sorted(ks):  # постройка подготовленных зон (А, B и W)
+        mc.setBlocks(zona[k]['pos0'], zona[k]['pos1'], zona[k]['color'])
     return pos_ret
 
 
@@ -456,7 +510,9 @@ def school112():
         pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 2, -1)
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
         # стена 5
-        pos_tek = build_blocks(pos_tek, True, 110, BROWN, BROWN, 5)
+        pos_tek = build_blocks(pos_tek, True, 110, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, True, 150, BROWN, BROWN, 1)
+        pos_tek = build_blocks(pos_tek, True, 110, BROWN, BROWN, 2)
         # стена 6
         pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 2)
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
