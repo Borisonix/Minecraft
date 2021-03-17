@@ -51,23 +51,30 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
             pos_st2 = posStart.clone()  # стартовая позиция верхней части двери
             pos1 = posStart.clone()  # заготовка для конечной позиция нижней части двери
             pos2 = posStart.clone()  # заготовка для конечной позиция верхней части двери
+            pos_svet = posStart.clone()  # заготовка для светильника над дверью
 
             pos_st2.y += H_ZONA_A   # стартовая высота верхней части двери. Нижняя уже готова
 
             pos1.y += 1
             pos2.y += H_DOOR_1 - 1
+            pos_svet.y += H_DOOR_1
             if p_horizon:
                 pos_st1.z += 1 * direction
                 pos_st2.z += 1 * direction
                 pos1.z += (W_DOOR_1) * direction
                 pos2.z += (W_DOOR_1) * direction
+                pos_svet.z += (W_DOOR_1//2 + 1) * direction
+                pos_svet.x -= 1 * direction
             else:
                 pos_st1.x += 1 * direction
                 pos_st2.x += 1 * direction
                 pos1.x += W_DOOR_1 * direction
                 pos2.x += W_DOOR_1 * direction
+                pos_svet.x += (W_DOOR_1 + W_DOOR_1//2 + 1) * direction
+                pos_svet.z -= 1 * direction
             mc.setBlocks(pos_st1, pos1, GREY_GLASS_PAN)
             mc.setBlocks(pos_st2, pos2, GLASS_PAN)
+            mc.setBlock(pos_svet, SVET)
             # ----------  вторая дверь  ------------------
             pos_st1 = posStart.clone()  # стартовая позиция нижней части двери
             pos_st2 = posStart.clone()  # стартовая позиция верхней части двери
@@ -83,13 +90,16 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
                 pos_st2.z += (W_DOOR_1 + 2) * direction
                 pos1.z += (W_DOOR_1 * 2 + 1) * direction
                 pos2.z += (W_DOOR_1 * 2 + 1) * direction
+                pos_svet.z += (W_DOOR_1 + W_DOOR_1//2) * direction
             else:
                 pos_st1.x += (W_DOOR_1 + 2) * direction
                 pos_st2.x += (W_DOOR_1 + 2) * direction
                 pos1.x += (W_DOOR_1 * 2 + 1) * direction
                 pos2.x += (W_DOOR_1 * 2 + 1) * direction
+                pos_svet.x += (W_DOOR_1 + W_DOOR_1//2) * direction
             mc.setBlocks(pos_st1, pos1, GREY_GLASS_PAN)
             mc.setBlocks(pos_st2, pos2, GLASS_PAN)
+            mc.setBlock(pos_svet, SVET)
             return pos_ret  # выходим
 
         if p_horizon:       # отмеряем ширину блока по соответствующей оси
@@ -148,6 +158,7 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
                     pos_st.x += ((W_B_1 - W_OKNA_4) // 2) * direction
                     pos.x = pos_st.x + (W_OKNA_4 - 1) * direction
             zona['W'] = {'pos0': pos_st, 'pos1': pos, 'color': OKNO}
+
     elif c1 == 2:  # стеновой блок типа 2 (7х8) ==============================================================
         if c2 == 4:  # строим цоколь?
             pos.y += (H_COKOL - 1)
@@ -160,6 +171,37 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
             mc.setBlocks(posStart, pos, BROWN_DARK)
             return pos_ret
 
+        if c2 == 5:         # ===============    узкий блок с 1 дверью   ====================================
+            pos.y += H_B - 1
+            if p_horizon:
+                pos.z += (W_B_2 - 1) * direction
+                pos_ret.z += W_B_2 * direction
+            else:
+                pos.x += (W_B_1 - 2) * direction
+                pos_ret.x += W_B_2 * direction
+            mc.setBlocks(posStart, pos, colA)
+            # ----------  дверь  ------------------
+            pos_st = posStart.clone()  # стартовая позиция нижней части двери
+            pos = posStart.clone()  # заготовка для конечной позиция нижней части двери
+            pos_svet = posStart.clone()  # заготовка для светильника над дверью
+
+            pos.y += H_DOOR_1 - 1
+            pos_svet.y += H_DOOR_1
+            if p_horizon:
+                pos_st.z += 2 * direction
+                pos.z += (W_DOOR_1 + 1) * direction
+                pos_svet.z += (W_B_2//2) * direction
+                pos_svet.x -= 1 * direction
+            else:
+                pos_st.x += 2 * direction
+                pos.x += (W_DOOR_1 + 1) * direction
+                pos_svet.x += (W_B_2 // 2) * direction
+                pos_svet.z += 1 * direction
+            mc.setBlocks(pos_st, pos, GREY_GLASS_PAN)
+            mc.setBlock(pos_svet, SVET)
+            return pos_ret  # выходим
+
+        # обычный стеновой блок узкий
         if p_horizon:
             pos.z += (W_B_2 - 1) * direction
             pos_ret.z += (W_B_2) * direction
@@ -201,6 +243,36 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
                     pos.x = pos_st.x + (W_OKNA_4 - 1) * direction
             zona['W'] = {'pos0': pos_st, 'pos1': pos, 'color': OKNO}
     elif c1 == 3:                                                           # стеновой блок типа 3 (7x13)
+        if c2 == 5:         # ===============    узкий блок с 1 дверью   ====================================
+            pos.y += H_B_3 - 1
+            if p_horizon:
+                pos.z += (W_B_3 - 1) * direction
+                pos_ret.z += W_B_3 * direction
+            else:
+                pos.x += (W_B_3 - 1) * direction
+                pos_ret.x += W_B_3 * direction
+            mc.setBlocks(posStart, pos, colA)
+            # ----------  дверь  ------------------
+            pos_st = posStart.clone()  # стартовая позиция нижней части двери
+            pos = posStart.clone()  # заготовка для конечной позиция нижней части двери
+            pos_svet = posStart.clone()  # заготовка для светильника над дверью
+
+            pos.y += H_DOOR_1 - 1
+            pos_svet.y += H_DOOR_1
+            if p_horizon:
+                pos_st.z += 2 * direction
+                pos.z += (W_DOOR_1 + 1) * direction
+                pos_svet.z += (W_B_2//2) * direction
+                pos_svet.x -= 1 * direction
+            else:
+                pos_st.x += 2 * direction
+                pos.x += (W_DOOR_1 + 1) * direction
+                pos_svet.x += (W_B_2 // 2) * direction
+                pos_svet.z += 1 * direction
+            mc.setBlocks(pos_st, pos, GREY_GLASS_PAN)
+            mc.setBlock(pos_svet, SVET)
+            return pos_ret  # выходим
+
         if p_horizon:
             pos.z += (W_B_3 - 1) * direction
             pos_ret.z += (W_B_3) * direction
@@ -248,9 +320,6 @@ def build_block(posStart, p_horizon, kod, colA, colB, direction=1):
         pos.y = posStart.y
         pos.y += (H_B_4 - 1)
         zona['B'] = {'pos0': pos_st, 'pos1': pos, 'color': colB}
-
-
-
 
     ks = zona.keys()
     for k in sorted(ks):  # постройка подготовленных зон (А, B и W)
@@ -496,11 +565,12 @@ def school112():
 
         # стена 1
         pos_tek = build_blocks(pos_tek, True, 200, WHITE, WHITE, 3)
-        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, True, 250, ORANGE, ORANGE, 1)
         pos_tek = build_blocks(pos_tek, True, 110, BROWN, WHITE, 2)
         # стена 2
         pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 4)
-        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 250, WHITE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 3)
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4)
         # стена 3
         pos_tek = build_blocks(pos_tek, True, 112, BROWN, BROWN, 1)
@@ -522,11 +592,12 @@ def school112():
         pos_tek = build_blocks(pos_tek, True, 111, BROWN, BROWN, 1)
         # стена 8
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4, -1)
-        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 250, WHITE, WHITE, 1, -1)
         pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 4, -1)
         # стена 9
         pos_tek = build_blocks(pos_tek, True, 110, BROWN, WHITE, 2)
-        pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
+        pos_tek = build_blocks(pos_tek, True, 250, ORANGE, ORANGE, 1)
         pos_tek = build_blocks(pos_tek, True, 200, WHITE, WHITE, 3)
 
         # стена 10
@@ -534,7 +605,7 @@ def school112():
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
         pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4)
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 5)
-        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 250, WHITE, WHITE, 2)
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
 
         pos_floor = pos_tek.clone()
@@ -565,18 +636,18 @@ def school112():
         build_blocks(pos_tek, True, 200, WHITE, WHITE, 9, -1)
         # стена 16
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2)
-        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2)
+        pos_tek = build_blocks(pos_tek, False, 250, BROWN, BROWN, 2)
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
         pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 3)
         # стена 17
         pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 2, -1)
-        pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)  # дверь
+        pos_tek = build_blocks(pos_tek, True, 250, BROWN, BROWN, 1, -1)  # дверь
         pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 4, -1)
         pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1, -1)
         pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 1, -1)
         # стена 18
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 1, -1)
-        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1, -1)   # дверь
+        pos_tek = build_blocks(pos_tek, False, 250, BROWN, BROWN, 1, -1)   # дверь
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 8, -1)
 
         pos_floor = pos_tek.clone()
@@ -595,7 +666,8 @@ def school112():
         # стена 20
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 1, +1)
         pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 1, +1)
-        pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 2, +1)
+        pos_tek = build_blocks(pos_tek, False, 250, WHITE, WHITE, 1, +1)
+        pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 1, +1)
 
         pos_floor = pos_tek.clone()
         pos_floor.x -= 1
@@ -611,7 +683,8 @@ def school112():
         # стена 22
         pos_tek.x -= 1
         pos_tek.z += 1
-        pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 250, WHITE, WHITE, 1, -1)
+        pos_tek = build_blocks(pos_tek, False, 200, WHITE, WHITE, 3, -1)
         # стена 23
         pos_tek.x += 1
         pos_tek.z += 1
@@ -619,7 +692,7 @@ def school112():
         build_blocks(pos_tek, True, 200, WHITE, WHITE, 4)
         # стена 24
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3, -1)
-        pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 2, -1)
+        pos_tek = build_blocks(pos_tek, False, 250, WHITE, WHITE, 2, -1)
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 5, -1)
         pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4, -1)
         pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 2, -1)
@@ -693,7 +766,8 @@ def school112():
         # стена 11
         pos_tek = build_blocks(pos_tek, True, 300, BROWN, ORANGE, 4)
         # стена 12
-        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 4)
+        pos_tek = build_blocks(pos_tek, False, 350, WHITE, WHITE, 1)
+        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 3)
         # стена 13
         pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 2, -1)
         pos_tek = build_blocks(pos_tek, True, 310, ORANGE, BROWN, 4, -1)
@@ -718,7 +792,8 @@ def school112():
         pos_tek = build_blocks(pos_tek, True, 310, BROWN, WHITE, 1, -1)
         pos_tek = build_blocks(pos_tek, True, 310, ORANGE, WHITE, 1, -1)
         # стена 18
-        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 5, -1)
+        pos_tek = build_blocks(pos_tek, False, 350, WHITE, WHITE, 1, -1)    # дверь
+        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 4, -1)
         pos_tek = build_blocks(pos_tek, False, 300, ORANGE, ORANGE, 5, -1)
 
         pos_floor = pos_tek.clone()
@@ -751,7 +826,8 @@ def school112():
         # стена 22
         pos_tek.x -= 1
         pos_tek.z += 1
-        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 4, -1)
+        pos_tek = build_blocks(pos_tek, False, 300, WHITE, WHITE, 3, -1)
+        pos_tek = build_blocks(pos_tek, False, 350, WHITE, WHITE, 1, -1)
         # стена 23
         pos_tek.x += 1
         pos_tek.z += 1
@@ -993,7 +1069,9 @@ def school112():
     level2()
     level3()
     level4()
+    '''
     q = input('Будем строить полы и крышу? (Y/N)')
     if q == "Y" or q == "y":
         for i in  range(5):
             flooring(floor[i][0], KAMEN)
+    '''
