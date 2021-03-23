@@ -348,120 +348,27 @@ def build_blocks(pos_Start, p_horizon, kod, colA, colB, amount, direction=1):
     return pos
 
 
-def walls4():
-    # --------------- цоколь ------------------------
-    pos_tek = build_blocks(posMAIN, True, 240, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 2)
-
-    pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 8)
-
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1, -1)
-
-    pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 8, -1)
-
-
-    # ---------------------- 1 этаж -----------------
-    pos_tek = posMAIN.clone()
-    pos_tek.y += H_COKOL
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 2)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, True, 110, BROWN, WHITE, 2)
-
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4)
-
-    pos_tek = build_blocks(pos_tek, True, 112, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 111, BROWN, BROWN, 1, -1)
-
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 4, -1)
-
-    # ---------------------- 2 этаж -----------------
-    pos_tek = posMAIN.clone()
-    pos_tek.y += H_COKOL + H_B * 1  # 2 этаж
-    pos_tek = build_blocks(pos_tek, True, 200, BROWN, BROWN, 3)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, True, 110, WHITE, WHITE, 2)
-
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, ORANGE, 4)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4)
-
-    pos_tek = build_blocks(pos_tek, True, 112, WHITE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, BROWN, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 111, WHITE, WHITE, 1, -1)
-
-    pos_tek = build_blocks(pos_tek, False, 110, BROWN, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, BROWN, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, BROWN, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 4, -1)
-
-
-    # ---------------------- 3 этаж -----------------
-    pos_tek = posMAIN.clone()
-    pos_tek.y += H_COKOL + H_B * 2  # 3 этаж
-    pos_tek = build_blocks(pos_tek, True, 200, ORANGE, ORANGE, 3)
-    pos_tek = build_blocks(pos_tek, True, 210, ORANGE, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, True, 110, ORANGE, ORANGE, 2)
-
-    pos_tek = build_blocks(pos_tek, False, 110, ORANGE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, ORANGE, 1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4)
-
-    pos_tek = build_blocks(pos_tek, True, 112, WHITE, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 210, BROWN, ORANGE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 111, WHITE, ORANGE, 1, -1)
-
-    pos_tek = build_blocks(pos_tek, False, 110, ORANGE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 200, BROWN, ORANGE, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, BROWN, ORANGE, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 210, ORANGE, WHITE, 4, -1)
-
-    # ---------------------- крыша -----------------
-    pos_tek = posMAIN.clone()
-    pos_tek.y += H_COKOL + H_B * 3
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 3)
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 2)
-
-    pos_tek = build_blocks(pos_tek, False, 130, WHITE, WHITE, 4)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 1)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 3)
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4)
-
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, True, 230, ORANGE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, True, 130, ORANGE, WHITE, 1, -1)
-
-    pos_tek = build_blocks(pos_tek, False, 130, WHITE, WHITE, 4, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 1, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, ORANGE, WHITE, 3, -1)
-    pos_tek = build_blocks(pos_tek, False, 230, WHITE, WHITE, 4, -1)
-
-
 def school112():
     def level0():
         # -------------------------------- цоколь -------------------------------
         pos_floor = posMAIN.clone()
-        pos_floor.x += 1
+        pos_floor.x += 20
         pos_floor.y += H_COKOL - 1
-        pos_floor.z += 1
+        pos_floor.z += 20
         floor.append(0)
         floor[0] = list()
         floor[0].append(pos_floor)            #  опорная точка для построения пола
         mc.setBlock(pos_floor, FONAR)
         # стена 1
-        pos_tek = build_blocks(posMAIN, True, 240, BROWN, BROWN, 4)
+        pos_tek = build_blocks(posMAIN, True, 240, BROWN, BROWN, 3)
+
+        # крыльцо 1 стартовая точка
+        krilco = list()
+        pos_kril = pos_tek.clone()
+        pos_kril.x -= 1
+        krilco.append(pos_kril)
+
+        pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 1)
         pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 2)
         # стена 2
         pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4)
@@ -469,6 +376,12 @@ def school112():
         # стена 3
         pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
         pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
+
+        # сохранить точку для крыльца 2 k_main
+        pos_kril = pos_tek.clone()
+        pos_kril.x -= 1
+        krilco.append(pos_kril)
+
         pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
         # стена 4
         pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 2, -1)
@@ -1069,9 +982,12 @@ def school112():
     level2()
     level3()
     level4()
-    '''
+
     q = input('Будем строить полы и крышу? (Y/N)')
     if q == "Y" or q == "y":
-        for i in  range(5):
-            flooring(floor[i][0], KAMEN)
-    '''
+        for i in range(5):
+            for j in range(4):
+                flooring(floor[i][j], WHITE if i == 0 else KAMEN)
+
+
+

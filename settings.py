@@ -43,4 +43,5 @@ posMy = posMAIN.clone()
 posMy.y += 5
 mc.player.setTilePos(posMy)
 #'''
+
 floor = list()      # список опорных точек для построения полов и крыши
