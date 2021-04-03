@@ -23,9 +23,9 @@ W_DOOR_1, H_DOOR_1 = 3, 6       # ширина и высота двери гла
 AIR = 0                 # воздух
 STONE = 1               # камень для основы
 WHITE = 155
-BROWN = 159,12          # было 35,14
-ORANGE = 159,1
-BROWN_DARK = 159,12      # темно-коричневый для цоколя было 159,7
+BROWN = 159, 12          # было 35,14
+ORANGE = 159, 1
+BROWN_DARK = 159, 12      # темно-коричневый для цоколя было 159,7
 OKNO = 160      # 102              тонкое окно
 PAUSE = 0
 KAMEN = 44
@@ -33,6 +33,11 @@ FONAR = 89   # отмечены точки начала строительств
 SVET = 89
 GREY_GLASS_PAN = 160, 7
 GLASS_PAN = 102
+STUPENI = 156, 3
+STUPENI2 = 156, 2
+RED = 35, 14
+ZABOR = 85, 1
+ZABOR2 = 85, 0
 
 mc = Minecraft.create()
 
@@ -45,3 +50,4 @@ mc.player.setTilePos(posMy)
 #'''
 
 floor = list()      # список опорных точек для построения полов и крыши
+krilco = list()
