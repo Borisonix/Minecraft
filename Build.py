@@ -362,7 +362,7 @@ def school112():
         # стена 1
         pos_tek = build_blocks(posMAIN, True, 240, BROWN, BROWN, 3)
 
-        # крыльцо 1 стартовая точка
+        # крыльцо [0] стартовая точка
         pos_kril = pos_tek.clone()
         pos_kril.x -= 1
         pos_kril.y += 1
@@ -373,12 +373,18 @@ def school112():
         pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 2)
         # стена 2
         pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4)
+        # крыльцо [1] стартовая точка
+        pos_kril = pos_tek.clone()
+        pos_kril.z += 1
+        pos_kril.y += 1
+        krilco.append(pos_kril)
+        mc.setBlock(pos_kril, FONAR)
         pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 8)
         # стена 3
         pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
         pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 4)
 
-        # сохранить точку для крыльца 2 k_main
+        # сохранить точку для крыльца [2] k_main
         pos_kril = pos_tek.clone()
         pos_kril.x -= 1
         pos_kril.y += 1
@@ -400,11 +406,19 @@ def school112():
         pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 1)
         # стена 8
         pos_tek = build_blocks(pos_tek, False, 240, BROWN, BROWN, 8, -1)
+        # крыльцо [3] стартовая точка
+        pos_kril = pos_tek.clone()
+        pos_kril.x -= 1
+        pos_kril.z -= 1
+        pos_kril.y += 1
+        krilco.append(pos_kril)
+        mc.setBlock(pos_kril, FONAR)
+
         pos_tek = build_blocks(pos_tek, False, 140, BROWN, BROWN, 4, -1)
         # стена 9
         pos_tek = build_blocks(pos_tek, True, 140, BROWN, BROWN, 2)
         pos_tek = build_blocks(pos_tek, True, 240, BROWN, BROWN, 1)
-        # крыльцо 3 стартовая точка
+        # крыльцо [4] стартовая точка
         pos_kril = pos_tek.clone()
         pos_kril.x -= 1
         pos_kril.y += 1
@@ -996,9 +1010,10 @@ def school112():
     level4()
 
     krilco_t1(krilco[0])
-    krilco_t1(krilco[2], -1)
+    krilco_main(krilco[2])
+    krilco_t1(krilco[4], -1)
 
-    q = input('Будем строить полы и крышу? (Y/N)')
+    q = 'N'      # q = input('Будем строить полы и крышу? (Y/N)')
     if q == "Y" or q == "y":
         for i in range(5):
             for j in range(4):
